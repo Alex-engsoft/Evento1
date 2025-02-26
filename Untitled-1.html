@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lollapalooza 2025</title>
+    <style>
+
+
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+
+        h1, h2 {
+            color: #333;
+        }
+
+
+        table {
+            margin: 20px 0;
+            border-collapse: collapse;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        th, td {
+            padding: 8px 15px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+
+        form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+        label {
+            margin: 5px 0;
+        }
+
+
+        input[type="text"],
+        input[type="email"],
+        input[type="radio"],
+        input[type="submit"],
+        input[type="checkbox"] {
+            margin: 5px;
+        }
+
+
+        input[type="submit"] {
+            margin-top: 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Lollapalooza 2025</h1>
+
+
+        <img src="https://i.imgur.com/IET88wq.png" alt="Imagem do Evento Musical" width="400
+        " height="200">
+
+
+        <h2>Assista ao nosso vídeo promocional</h2>
+        <video width="1000" controls>
+            <source src="<iframe width="560" height="315" src="https://www.youtube.com/embed/XKe106WAyYg?si=W1EIN5BsxZ_fFaR9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>s" type="video/mp4">
+            Seu navegador não suporta o formato de vídeo.
+        </video>
+
+
+        <h2>Ouça uma palinha doque está por vir</h2>
+        <audio controls>
+            <source src="audio/musica_trilha_lollapalooza.mp3" type="audio/mp3">
+            Seu navegador não suporta o elemento de áudio.
+        </audio>
+
+
+        <h2>Programação do Evento</h2>
+        <table border="2">
+            <thead>
+                <tr>
+                    <th>Horário</th>
+                    <th>Atração</th>
+                    <th>Palco</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>18:00</td>
+                    <td>Abertura com DJ João</td>
+                    <td>Palco Principal</td>
+                </tr>
+                <tr>
+                    <td>20:00</td>
+                    <td>Jay Sean</td>
+                    <td>Palco Secundário</td>
+                </tr>
+                <tr>
+                    <td>22:00</td>
+                    <td>Bruno Mars</td>
+                    <td>Palco Principal</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <h2>Inscrição Lollapalooza</h2>
+        <form action="/submit_form" method="post">
+            <label for="nome">Nome:</label><br>
+            <input type="text" id="nome" name="nome" required><br><br>
+
+
+            <label for="email">E-mail:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+
+
+            <label for="telefone">Telefone:</label><br>
+            <input type="text" id="telefone" name="telefone" required><br><br>
+
+
+            <label>Tipo de Ingresso:</label><br>
+            <input type="radio" id="pista" name="ingresso" value="Pista" required>
+            <label for="pista">Pista</label><br>
+
+
+            <input type="radio" id="vip" name="ingresso" value="VIP">
+            <label for="vip">VIP</label><br>
+
+
+            <input type="radio" id="camarote" name="ingresso" value="Camarote">
+            <label for="camarote">Camarote</label><br><br>
+
+
+            <label for="notificacoes">Receber nossas atualizações por e-mail:</label>
+            <input type="checkbox" id="notificacoes" name="notificacoes"><br><br>
+
+
+            <input type="submit" value="Enviar Inscrição">
+        </form>
+    </div>
+</body>
+</html>
+
+
+
+
+
