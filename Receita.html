@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Receitas Chef Alek</title>
+  <style>
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    
+    header {
+      background-color: #ff6347;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-family: 'Georgia', serif; 
+      font-size: 2.5em; 
+      font-weight: 600; 
+      letter-spacing: 3px; 
+      text-transform: uppercase; 
+      margin-bottom: 40px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    }
+
+    
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5dc; 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      overflow-x: hidden; 
+      min-height: 100vh; 
+    }
+
+    
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+      gap: 20px;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    
+    .card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: auto;
+    }
+
+    
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    
+    .card-content {
+      padding: 20px;
+      flex-grow: 1;
+    }
+
+    
+    .card h2 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    
+    .card p {
+      font-size: 1em;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    
+    .modo-preparo {
+      font-size: 1em;
+      color: #333;
+      background-color: #f9f9f9;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 10px;
+      border-left: 5px solid #ff6347; 
+    }
+
+    
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background-color: #ff6347; 
+    }
+
+    
+    .card::after {
+      content: '🍽️';
+      font-size: 1.5em;
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      opacity: 0.3;
+      transition: opacity 0.3s ease;
+    }
+
+    
+    .card:hover::after {
+      opacity: 1;
+    }
+
+   
+    .card:nth-child(odd) {
+      background-color: #f9f9f9;
+    }
+
+    .card:nth-child(even) {
+      background-color: #f1f1f1;
+    }
+
+    
+    .modo-preparo ol {
+      padding-left: 20px; 
+    }
+
+    .modo-preparo ol li {
+      margin-bottom: 10px; 
+    }
+
+   
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 1em;
+      color: #333;
+      font-family: 'Arial', sans-serif;
+      padding: 20px;
+      background-color: #ff6347;
+      color: #fff;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    Receitas Chef Alek
+  </header>
+  
+  <div class="container">
+    
+    <div class="card">
+      <img src="c:\Users\alexs\Downloads\617844_kit-feijoada_3.webp" alt="Receita 1">
+      <div class="card-content">
+        <h2>Feijoada Tradicional</h2>
+        <p>A feijoada é um prato típico da culinária brasileira, composto por feijão preto, carne de porco e de boi, servido com arroz, farofa e laranja.</p>
+        <div class="modo-preparo">
+          <h3>Modo de Preparo:</h3>
+          <ol>
+            <li>Coloque o feijão preto de molho por 12 horas.</li>
+            <li>Cozinhe o feijão com carnes de porco e boi em uma panela grande por cerca de 2 horas.</li>
+            <li>Adicione temperos como alho, cebola e pimentão, e cozinhe por mais 30 minutos.</li>
+            <li>Sirva com arroz branco, farofa e fatias de laranja.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+   
+    <div class="card">
+      <img src="c:\Users\alexs\Downloads\08-bolo-chocolate-1024x683.png" alt="Receita 2">
+      <div class="card-content">
+        <h2>Bolo de Chocolate</h2>
+        <p>O bolo de chocolate é uma receita clássica que encanta qualquer um. Feito com cacau, leite, ovos e açúcar, é perfeito para qualquer ocasião.</p>
+        <div class="modo-preparo">
+          <h3>Modo de Preparo:</h3>
+          <ol>
+            <li>Preaqueça o forno a 180°C.</li>
+            <li>Em uma tigela, misture os ingredientes secos (farinha, açúcar, cacau e fermento).</li>
+            <li>Adicione os ovos, o leite e a manteiga, misturando bem até formar uma massa homogênea.</li>
+            <li>Coloque a massa em uma forma untada e asse por cerca de 30 minutos ou até que um palito saia limpo.</li>
+            <li>Deixe esfriar e cubra com ganache de chocolate.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+   
+    <div class="card">
+      <img src="c:\Users\alexs\Downloads\images.jpeg" alt="Receita 3">
+      <div class="card-content">
+        <h2>Pizza Marguerita</h2>
+        <p>A pizza marguerita é uma das mais famosas do mundo, feita com molho de tomate, queijo mozzarella e folhas de manjericão.</p>
+        <div class="modo-preparo">
+          <h3>Modo de Preparo:</h3>
+          <ol>
+            <li>Preaqueça o forno a 220°C.</li>
+            <li>Abra a massa de pizza em uma superfície enfarinhada.</li>
+            <li>Espalhe o molho de tomate e adicione a mozzarella ralada.</li>
+            <li>Leve ao forno por 10 a 15 minutos, até que a massa esteja dourada e o queijo derretido.</li>
+            <li>Retire do forno e adicione folhas de manjericão fresco.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="card">
+      <img src="c:\Users\alexs\Downloads\brigadeiro-.webp" alt="Receita 4">
+      <div class="card-content">
+        <h2>Brigadeiro</h2>
+        <p>O brigadeiro é um doce típico brasileiro, feito com leite condensado, chocolate e granulado. Simples e delicioso!</p>
+        <div class="modo-preparo">
+          <h3>Modo de Preparo:</h3>
+          <ol>
+            <li>Em uma panela, misture o leite condensado, o achocolatado e a manteiga.</li>
+            <li>Cozinhe em fogo baixo, mexendo sempre, até a mistura começar a se soltar do fundo da panela.</li>
+            <li>Retire do fogo e deixe esfriar um pouco.</li>
+            <li>Modele em bolinhas e passe no granulado.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+   
+    <div class="card">
+      <img src="c:\Users\alexs\Downloads\moqueca-de-peixe-baiana-1200x800.jpg" alt="Receita 5">
+      <div class="card-content">
+        <h2>Moqueca Baiana</h2>
+        <p>A moqueca baiana é uma saborosa receita de peixe cozido com leite de coco, azeite de dendê, pimentões e tomates.</p>
+        <div class="modo-preparo">
+          <h3>Modo de Preparo:</h3>
+          <ol>
+            <li>Tempere o peixe com suco de limão, sal, pimenta e alho.</li>
+            <li>Em uma panela grande, aqueça o azeite de dendê e refogue a cebola e o pimentão.</li>
+            <li>Adicione o peixe, tomates e o leite de coco. Cozinhe por 20 minutos.</li>
+            <li>Sirva com arroz branco e farofa.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="card">
+      <img src="c:\Users\alexs\Downloads\images (1).jpeg" alt="Receita 6">
+      <div class="card-content">
+        <h2>Quiche de Alho-Poró</h2>
+        <p>Uma quiche clássica, com recheio de alho-poró, creme de leite e queijo, ideal para um almoço leve e saboroso.</p>
+        <div class="modo-preparo">
+          <h3>Modo de Preparo:</h3>
+          <ol>
+            <li>Preaqueça o forno a 180°C.</li>
+            <li>Refogue o alho-poró em uma panela com azeite até murchar.</li>
+            <li>Em uma tigela, misture o creme de leite, ovos e queijo.</li>
+            <li>Adicione o alho-poró e misture bem.</li>
+            <li>Coloque a mistura sobre a massa de torta já assada e asse por 30 minutos.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© Receitas do Chef Alek - ENG Software 2025</p>
+  </footer>
+</body>
+</html>
