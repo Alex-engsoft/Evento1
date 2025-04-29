@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Loja online</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    .produtos, .carrinho {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+
+    .produto {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .remover {
+      background-color: #e74c3c;
+      margin-left: 10px;
+    }
+
+    .remover:hover {
+      background-color: #c0392b;
+    }
+
+    .resetar {
+      background-color: #3498db;
+      margin-left: 10px;
+    }
+
+    .resetar:hover {
+      background-color: #2980b9;
+    }
+
+    #mensagem {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .success {
+      color: green;
+    }
+
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Loja Clique e compre</h2>
+
+  <div class="produtos">
+    <h3>Produtos disponíveis:</h3>
+    <div class="produto">
+      <span>Camisa - R$50,00</span>
+      <button onclick="adicionarProduto('Camisa', 50)">Adicionar</button>
+    </div>
+    <div class="produto">
+      <span>Calça - R$80,00</span>
+      <button onclick="adicionarProduto('Calça', 80)">Adicionar</button>
+    </div>
+    <div class="produto">
+      <span>Tênis - R$120,00</span>
+      <button onclick="adicionarProduto('Tênis', 120)">Adicionar</button>
+    </div>
+  </div>
+
+  <div class="carrinho">
+    <h3>Seu carrinho:</h3>
+    <ul id="lista-carrinho"></ul>
+    <p><strong>Total:</strong> R$<span id="total">0.00</span></p>
+    <p><strong>Saldo disponível:</strong> R$<span id="saldo">200.00</span></p>
+    <button onclick="finalizarCompra()">Finalizar Compra</button>
+    <button class="resetar" onclick="resetarSaldo()">Resetar Saldo</button>
+    <p id="mensagem"></p>
+  </div>
+
+  <script>
+    let saldo = localStorage.getItem('saldo') ? parseFloat(localStorage.getItem('saldo')) : 200.00;
+    let carrinho = [];
+
+    function salvarSaldo() {
+      localStorage.setItem('saldo', saldo.toFixed(2));
+    }
+
+    function adicionarProduto(nome, preco) {
+      carrinho.push({ nome, preco });
+      atualizarCarrinho();
+    }
+
+    function removerProduto(index) {
+      carrinho.splice(index, 1);
+      atualizarCarrinho();
+    }
+
+    function atualizarCarrinho() {
+      const lista = document.getElementById("lista-carrinho");
+      lista.innerHTML = "";
+      let total = 0;
+
+      carrinho.forEach((item, index) => {
+        total += item.preco;
+        const li = document.createElement("li");
+        li.textContent = `${item.nome} - R$${item.preco.toFixed(2)}`;
+
+        const botaoRemover = document.createElement("button");
+        botaoRemover.textContent = "Remover";
+        botaoRemover.className = "remover";
+        botaoRemover.onclick = () => removerProduto(index);
+
+        li.appendChild(botaoRemover);
+        lista.appendChild(li);
+      });
+
+      document.getElementById("total").textContent = total.toFixed(2);
+      document.getElementById("saldo").textContent = saldo.toFixed(2);
+      document.getElementById("mensagem").textContent = "";
+    }
+
+    function finalizarCompra() {
+      const total = carrinho.reduce((soma, item) => soma + item.preco, 0);
+      const mensagem = document.getElementById("mensagem");
+
+      total <= saldo
+        ? (
+            saldo -= total,
+            salvarSaldo(),
+            carrinho = [],
+            atualizarCarrinho(),
+            mensagem.textContent = "Compra realizada com sucesso!",
+            mensagem.className = "success"
+          )
+        : (
+            mensagem.textContent = "Saldo insuficiente!",
+            mensagem.className = "error"
+          );
+    }
+
+    function resetarSaldo() {
+      saldo = 200.00;
+      carrinho = [];
+      salvarSaldo();
+      atualizarCarrinho();
+      const mensagem = document.getElementById("mensagem");
+      mensagem.textContent = "Saldo resetado para R$200,00 e carrinho limpo!";
+      mensagem.className = "success";
+    }
+
+    atualizarCarrinho();
+  </script>
+
+</body>
+</html>
