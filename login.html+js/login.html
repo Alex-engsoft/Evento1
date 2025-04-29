@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login Simples</title>
+  <style>
+    body {
+      background: #f5f7fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 360px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    label {
+      font-size: 14px;
+      color: #555;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #message {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .error {
+      color: #e74c3c;
+    }
+
+    .success {
+      color: #2ecc71;
+    }
+
+    .show-password {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Login</h2>
+
+    <input type="text" id="username" placeholder="Nome de usuário">
+    <input type="password" id="password" placeholder="Senha">
+
+    <div class="show-password">
+      <input type="checkbox" id="togglePassword">
+      <label for="togglePassword">Mostrar senha</label>
+    </div>
+
+    <button onclick="login()">Entrar</button>
+
+    <p id="message"></p>
+  </div>
+
+  <script>
+    let tentativas = 3;
+
+    document.getElementById("togglePassword").addEventListener("change", function() {
+      const senha = document.getElementById("password");
+      senha.type = this.checked ? "text" : "password";
+    });
+
+    function login() {
+      const nome = document.getElementById("username").value.trim();
+      const senha = document.getElementById("password").value;
+      const mensagem = document.getElementById("message");
+
+      if (nome === "" || senha === "") {
+        mensagem.textContent = "Preencha todos os campos.";
+        mensagem.className = "error";
+        return;
+      }
+
+      if (senha === "12345") {
+        mensagem.textContent = `Bem-vindo, ${nome}!`;
+        mensagem.className = "success";
+      } else {
+        tentativas--;
+        if (tentativas > 0) {
+          mensagem.textContent = `Senha incorreta. Tente novamente. Tentativas restantes: ${tentativas}`;
+          mensagem.className = "error";
+        } else {
+          mensagem.textContent = "Você foi bloqueado. Tente novamente mais tarde.";
+          mensagem.className = "error";
+          document.querySelector("button").disabled = true;
+          document.getElementById("username").disabled = true;
+          document.getElementById("password").disabled = true;
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
