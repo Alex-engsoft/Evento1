@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Contador de Curtidas</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 300px;
+      position: relative;
+    }
+
+    #userImage {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    #likeButton {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #likeButton:hover {
+      background-color: #45a049;
+    }
+
+    #likeButton:active {
+      transform: scale(1.05);
+    }
+
+    #greeting {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    #counter {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .like-effect {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      animation: pop 0.6s ease-out;
+      pointer-events: none;
+    }
+
+    @keyframes pop {
+      0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      50% {
+        transform: translate(-50%, -60%) scale(1.5);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translate(-50%, -80%) scale(0.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img id="userImage" src="c:\Users\alexs\Downloads\lula-finlandia_mcamgo_abr_01062023-2.webp" alt="Foto do usuário" />
+
+    <input type="text" id="nameInput" placeholder="Digite seu nome" />
+    
+    <p id="greeting">Olá, visitante!</p>
+    
+    <button id="likeButton">Curtir</button>
+    
+    <p id="counter">Curtidas: 0</p>
+  </div>
+
+  <script>
+    const nameInput = document.getElementById('nameInput');
+    const likeButton = document.getElementById('likeButton');
+    const greeting = document.getElementById('greeting');
+    const counter = document.getElementById('counter');
+
+    let clickCount = 0;
+
+    nameInput.addEventListener('keydown', function(event) {
+      console.log(`Tecla pressionada: ${event.key}`);
+    });
+
+    nameInput.addEventListener('input', function() {
+      updateGreeting();
+    });
+
+    likeButton.addEventListener('click', function() {
+      clickCount++;
+      updateGreeting();
+      counter.innerText = `Curtidas: ${clickCount}`;
+      showLikeEffect();
+    });
+
+    function updateGreeting() {
+      const name = nameInput.value.trim();
+      greeting.innerText = name ? `Olá, ${name}!` : 'Olá, visitante!';
+    }
+
+    function showLikeEffect() {
+      const effect = document.createElement('span');
+      effect.className = 'like-effect';
+      effect.innerText = '💖';
+      likeButton.appendChild(effect);
+
+      setTimeout(() => {
+        effect.remove();
+      }, 600);
+    }
+  </script>
+
+</body>
+</html>
